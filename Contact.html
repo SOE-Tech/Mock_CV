@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>Contact Info</title>
+</head>
+
+<body>
+  <h3>My Contact Info</h3>
+  <p>My Contact Details</p>
+  <p>My Fictional Address</p>
+  <p>My Website <a href="https://www.akb.com">www.Akb.com</a></p>
+  <ul>
+    <li>Phone: 800 Ac44B33</li>
+    <li>Phone: <a href="tel:+8002522233">833 252 2233</a></li>
+    <li>Email: <a href="mailto:mquaye@akb.com">mquaye@akb.com</a></li>
+</ul>
+<hr>
+<p><h3>Contact Us</h3></p>
+
+<p>
+<form action="mailto:diggiddi@hotmail.com" method="post" enctype="text/plain">
+  <label for="">Your Name</label>
+  <input type="text" name="yourName" value="">
+  <br>
+
+  <label for="">Your Email</label>
+  <input type="email" name="yourEmail" value="">
+  <br>
+
+  <label for="">Password</label>
+  <input type="password" name="yourPassword" value="">
+  <br>
+<!-- verify code for yes no box is correct from MDN -->
+  <label for="">Have You Read Our Terms of Service?</label>
+  <input type="checkbox" name="Terms of ServiceChecked" value="">
+  <div>
+    <input type="checkbox" id="Yes" name="Terms of Service" value="Yes">
+    <label for="Yes">Yes</label>
+  </div>
+  <div>
+    <input type="checkbox" id="No" name="Terms of Service" value="No">
+    <label for="No">No</label>
+  </div>
+
+  <label for="">Phone</label>
+  <input type="tel" name="yourPhone" value="">
+  <br>
+  <label for="">Address</label>
+  <input type="text" name="yourAdrress" value="">
+  <br>
+  <label for="">Age</label>
+  <input type="date" name="yourAge" value="">
+  <br>
+  <label for="">Upload Your File</label>
+  <input type="file" id="file" name="file" multiple><br>
+  <input type="submit" name="" value="Upload"><br>
+  <label for="">Submit Your Website URL</label>
+  <input type="url" name="yourWebsite" value="">
+
+<div class="">
+  <p>Please select your preferred contact method:</p>
+  <label for="contactChoice1">Email</label>
+  <input type="radio" id="contactChoice1" name="preferredcontact" value="email">
+  <label for="contactChoice2">Phone</label>
+  <input type="radio" id="contactChoice2"name="preferredcontact" value="phone">
+  <label for="contactChoice3">Mail</label>
+  <input type="radio" id="contactChoice3" name="preferredcontact" value="mail">
+   <!--div is another wat to end a line button can be used instead of input also -->
+
+
+ </div><br>
+<label for="">Your Message:</label><br>
+  <textarea name="yourMessage" rows="10" cols="30"></textarea><br>
+  <button type="submit" name="sendbutton">Send</button>
+</form>
+
+</p>
+  <a href="index.html">Home Page</a>
+</body>
+
+</html>
