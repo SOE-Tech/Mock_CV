@@ -13,15 +13,28 @@ bot = telebot.TeleBot(BOT_TOKEN, parse_mode="HTML")
 DEXSCREENER_API_URL = "https://api.dexscreener.com/latest/dex/search?q="
 
 def get_token_data(query: str):
-    """Fetches pair and price information from DexScreener API."""
+    """Fetches pair and price information from DexScreener API, prioritizing highest liquidity."""
     try:
-        response = requests.get(f"{DEXSCREENER_API_URL}{query}", timeout=10)
+        response = requests.get(f"{DEXSCREENER_API_URL}{query.strip()}", timeout=10)
         if response.status_code == 200:
             data = response.json()
             pairs = data.get("pairs")
             if pairs and len(pairs) > 0:
-                # Return the highest liquidity pair
-                return pairs[0]
+                clean_query = query.strip().upper()
+                # 1. First, check for exact symbol or name matches
+                exact_matches = [
+                    p for p in pairs 
+                    if p.get("baseToken", {}).get("symbol", "").upper() == clean_query
+                    or p.get("baseToken", {}).get("name", "").upper() == clean_query
+                ]
+                candidates = exact_matches if exact_matches else pairs
+                
+                # 2. Pick the pair with the highest USD liquidity to filter out fake/low-cap memecoins
+                best_pair = max(
+                    candidates,
+                    key=lambda p: float((p.get("liquidity") or {}).get("usd") or 0)
+                )
+                return best_pair
         return None
     except Exception as e:
         print(f"Error fetching data: {e}")
